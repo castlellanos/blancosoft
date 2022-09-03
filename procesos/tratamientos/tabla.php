@@ -2,65 +2,44 @@
 <?php 
 
 require_once "../../clases/conexion.php";
+
+var_dump($_REQUEST);
+
+
 $obj= new conectar();
 $conexion=$obj->conexion();
 
-$sql="SELECT
-id, 
-finca, 
-nombre, 
-nacimiento, 
-fenotipo, 
-color, 
-hierro, 
-numero, 
-sexo, 
-observacion
-FROM
-animales where estado='1'";
+$sql="SELECT id,animal,fecha,tipo, descripcion FROM `tratamientos` where estado='1'";
 $result=mysqli_query($conexion,$sql);
 ?>
 
 
 <div style="overflow-x:auto;">
 	<table class="table table-hover table-condensed table-bordered" id="iddatatable" >
-		<thead style="background-color: #dc3545;color: white; font-weight: bold;">
+		<thead style="background-color: #3586dc;color: white; font-weight: bold;">
 			<tr>
 				<td>Id</td>
-				<td>Finca</td>
-				<td>Nombre</td>
-				<td>Fecha Nacimiento</td>
-				<td>Fenotipo</td>
-				<td>Color</td>
+				<td>Animal</td>
+				<td>Fecha</td>
+				<td>Tipo</td>
+				<td>Descripcion</td>
 				
-				<td>Hierro</td>
-				<td>Numero</td>
-				<td>Sexo</td>
-				<td>Observacion</td>
 				
 				<td>Editar</td>
-				<td>Tratamientos</td>
 				<td>Eliminar</td>
 				
 			</tr>
 		</thead>
 		<tfoot style="background-color: #ccc;color: white; font-weight: bold;">
 			<tr>
-			<td>Id</td>
-				<td>Finca</td>
-				<td>Nombre</td>
-				<td>Fecha Nacimiento</td>
-				<td>Fenotipo</td>
-				<td>Color</td>
-				
-				<td>Hierro</td>
-				<td>Numero</td>
-				<td>Sexo</td>
-				<td>Observacion</td>
+				<td>Id</td>
+				<td>Animal</td>
+				<td>Fecha</td>
+				<td>Tipo</td>
+				<td>Descripcion</td>
 				
 				
 				<td>Editar</td>
-				<td>Tratamientos</td>
 				<td>Eliminar</td>
 				
 			</tr>
@@ -75,23 +54,14 @@ $result=mysqli_query($conexion,$sql);
 					<td><?php echo $mostrar[2] ?></td>
 					<td><?php echo $mostrar[3] ?></td>
 					<td><?php echo $mostrar[4] ?></td>
-					<td><?php echo $mostrar[5] ?></td>
-					<td><?php echo $mostrar[6] ?></td>
-					<td><?php echo $mostrar[7] ?></td>
-					<td><?php echo $mostrar[8] ?></td>
-					<td><?php echo $mostrar[9] ?></td>
-					
+										
 					
 					<td style="text-align: center;">
 						<span class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modalEditar" onclick="agregaFrmActualizar('<?php echo $mostrar[0] ?>')">
 							<span class="fa fa-pencil-square-o"></span>
 						</span>
 					</td>
-					<td style="text-align: center;">
-						<span class="btn btn-danger btn-sm"   onclick="myfunction(<?php echo $mostrar[0] ?>)">
-							<span class="fa fa-laptop"></span>
-						</span>
-					</td>
+					
 					<td style="text-align: center;">
 						<span class="btn btn-danger btn-sm" onclick="eliminarDatos('<?php echo $mostrar[0] ?>')">
 							<span class="fa fa-trash"></span>

@@ -2,7 +2,8 @@
 <html>
 <head>
 	<title></title>
-	<?php require_once "../../librerias/scripts.php";  ?>
+	<?php require_once "../../librerias/scripts.php"; ?>
+	
 </head>
 <body>
 	<div class="container">
@@ -39,20 +40,11 @@
 				</div>
 				<div class="modal-body">
 					<form id="frmnuevo">
-						<label>Nombre</label>
-						<input type="text" class="form-control input-sm" id="nombre" name="nombre">
-						<label>Fecha Nacimiento</label>
+						
+						<label>Fecha</label>
 						<input type="date" class="form-control input-sm" id="f_nac" name="f_nac">
-						<label>Fenotipo</label>
-						<input type="text" class="form-control input-sm" id="fenotipo" name="fenotipo">
-						<label>Color</label>
-						<input type="text" class="form-control input-sm" id="color" name="color">
-						<label>Hierro</label>
-						<input type="text" class="form-control input-sm" id="hierro" name="hierro">
-						<label>Numero</label>
-						<input type="text" class="form-control input-sm" id="numero" name="numero">
-						<label>Sexo</label>
-						<input type="text" class="form-control input-sm" id="sexo" name="sexo">
+						<label>Tipo</label>
+						<input type="" class="form-control input-sm" id="tipo" name="tipo">
 						<label>Observación</label>
 						<input type="" class="form-control input-sm" id="observacion" name="observacion">
 						
@@ -284,11 +276,7 @@
 		});
 	}
 
-	function myfunction(idanimal) {
-
-
-    window.open("../tratamientos/tratamientos.php?id="+idanimal,"Nueva Ventana","menubar=1,resizable=1,width=970,height=750")}
-
+	
 
 
 
