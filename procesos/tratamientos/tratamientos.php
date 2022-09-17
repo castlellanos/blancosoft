@@ -47,10 +47,24 @@
 						<label>Fecha</label>
 						<input type="date" class="form-control input-sm" id="fecha" name="fecha">
 						<label>Tipo</label>
-						<input type="input" class="form-control input-sm" id="tipo" name="tipo">
-						<label>Observación</label>
-						<input type="input" class="form-control input-sm" id="descripcion" name="descripcion">
 						
+						
+						<input list="tipo" name="tipo" id="lista" class="form-control">
+  
+						<datalist id="tipo">
+    <option value="Vacuna">
+    <option value="Urgencia">
+    <option value="Control Veterinario">
+    
+  </datalist>
+  
+						
+						
+						
+						
+						<label>Observación</label>
+						
+						<textarea class="form-control input-sm" id="descripcion" name="descripcion" rows="3"></textarea>
 						
 					</form>
 				</div>
@@ -221,7 +235,7 @@
 				url:"operaciones/actualizar.php",
 				success:function(r){
 					if(r==1){
-						$('#tablaDatatable').load('tabla.php');
+						
 						alertify.success("Actualizado con exito :D");
 					}else{
 						alert(datos);
@@ -261,17 +275,22 @@
 		});
 	}
 
-	function eliminarDatos(idanimal){
-		alertify.confirm('Eliminar una Factura', '¿Seguro de eliminar este animal? :(?', function(){ 
+	function eliminarDatos(tratamiento_animal){
+var valor=tratamiento_animal.split("/");
+alert(valor[1]);
+		alertify.confirm('Eliminar Tratamiento?', '¿Seguro de eliminar este tratamiento? :(?', function(){ 
+
 
 			$.ajax({
 				type:"POST",
-				data:"idanimal=" + idanimal,
+				data:"idtratamiento=" + valor[0],
 				url:"operaciones/eliminar.php",
 				success:function(r){
 					if(r==1){
-						$('#tablaDatatable').load('tabla.php');
+					
+						$('#tablaDatatable').load('tabla.php?id='+ valor[1]);
 						alertify.success("Eliminado con exito !");
+					
 					}else{
 						alertify.error("No se pudo eliminar...");
 					}

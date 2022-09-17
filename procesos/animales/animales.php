@@ -262,7 +262,7 @@
 	}
 
 	function eliminarDatos(idanimal){
-		alertify.confirm('Eliminar una Factura', '¿Seguro de eliminar este animal? :(?', function(){ 
+		alertify.confirm('Eliminar Animal', '¿Seguro de eliminar este animal? :(?', function(){ 
 
 			$.ajax({
 				type:"POST",

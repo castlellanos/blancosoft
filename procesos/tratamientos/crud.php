@@ -57,11 +57,11 @@
 
 
 		
-		public function eliminar($idanimal){
+		public function eliminar($idtratamiento){
 			$obj= new conectar();
 			$conexion=$obj->conexion();
 
-			$sql="UPDATE animales set estado='0'  where id='$idanimal'";
+			$sql="UPDATE tratamientos set estado='0'  where id='$idtratamiento'";
 			return mysqli_query($conexion,$sql);
 		}
 	}

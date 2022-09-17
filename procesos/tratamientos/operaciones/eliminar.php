@@ -5,6 +5,6 @@
 
 	$obj= new crud();
 
-	echo $obj->eliminar($_POST['idanimal']);
+	echo $obj->eliminar($_POST['idtratamiento']);
 
  ?>

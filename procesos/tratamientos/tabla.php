@@ -31,26 +31,13 @@ $result=mysqli_query($conexion,$sql);
 				
 			</tr>
 		</thead>
-		<tfoot style="background-color: #ccc;color: white; font-weight: bold;">
-			<tr>
-				<td>Id</td>
-				<td>Animal</td>
-				<td>Fecha</td>
-				<td>Tipo</td>
-				<td>Descripcion</td>
-				
-				
-				<td>Editar</td>
-				<td>Eliminar</td>
-				
-			</tr>
-		</tfoot>
+	
 		<tbody >
 			<?php 
 			while ($mostrar=mysqli_fetch_row($result)) {
 				?>
 				<tr >
-				<td><?php echo $mostrar[0] ?></td>
+				<td ><?php echo $mostrar[0] ?></td>
 					<td><?php echo $mostrar[1] ?></td>
 					<td><?php echo $mostrar[2] ?></td>
 					<td><?php echo $mostrar[3] ?></td>
@@ -64,7 +51,9 @@ $result=mysqli_query($conexion,$sql);
 					</td>
 					
 					<td style="text-align: center;">
-						<span class="btn btn-danger btn-sm" onclick="eliminarDatos('<?php echo $mostrar[0] ?>')">
+						<span class="btn btn-danger btn-sm" onclick="eliminarDatos('<?php echo $mostrar[0] .'/'. $mostrar[1] ?>')">
+
+
 							<span class="fa fa-trash"></span>
 						</span>
 					</td>

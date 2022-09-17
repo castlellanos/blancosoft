@@ -45,27 +45,7 @@ $result=mysqli_query($conexion,$sql);
 				
 			</tr>
 		</thead>
-		<tfoot style="background-color: #ccc;color: white; font-weight: bold;">
-			<tr>
-			<td>Id</td>
-				<td>Finca</td>
-				<td>Nombre</td>
-				<td>Fecha Nacimiento</td>
-				<td>Fenotipo</td>
-				<td>Color</td>
-				
-				<td>Hierro</td>
-				<td>Numero</td>
-				<td>Sexo</td>
-				<td>Observacion</td>
-				
-				
-				<td>Editar</td>
-				<td>Tratamientos</td>
-				<td>Eliminar</td>
-				
-			</tr>
-		</tfoot>
+	
 		<tbody >
 			<?php 
 			while ($mostrar=mysqli_fetch_row($result)) {
