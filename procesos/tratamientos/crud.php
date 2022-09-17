@@ -1,13 +1,20 @@
 <?php 
 
 	class crud{
+		
+		
+		
+		
+		
 		public function agregar($datos){
 			$obj= new conectar();
 			$conexion=$obj->conexion();
 
-			$sql="INSERT into animales VALUES ('','1','$datos[0]','$datos[1]','$datos[2]','$datos[3]','$datos[4]','$datos[5]','$datos[6]','$datos[7]','1');";
+			$sql="INSERT into tratamientos VALUES ('','$datos[0]','$datos[1]','$datos[2]','$datos[3]','1');";
 			return mysqli_query($conexion,$sql);
 		}
+
+
 
 		public function obtenDatos($id){
 			$obj= new conectar();

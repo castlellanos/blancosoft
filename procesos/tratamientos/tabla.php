@@ -6,9 +6,12 @@ require_once "../../clases/conexion.php";
 
 $obj= new conectar();
 $conexion=$obj->conexion();
+$trata_id=$_GET['id'];
+$sql="SELECT id,animal,fecha,tipo, descripcion FROM `tratamientos` WHERE estado='1' AND animal = ".$trata_id."";
 
-$sql="SELECT id,animal,fecha,tipo, descripcion FROM `tratamientos` WHERE estado='1' AND id = ".$_GET['id']."";
+
 $result=mysqli_query($conexion,$sql);
+//print_r(mysqli_fetch_row($result));
 ?>
 
 

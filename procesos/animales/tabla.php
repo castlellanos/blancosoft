@@ -19,7 +19,7 @@ observacion
 FROM
 animales where estado='1'";
 $result=mysqli_query($conexion,$sql);
-print_r(mysqli_fetch_row($result));
+//print_r(mysqli_fetch_row($result));
 ?>
 
 
@@ -81,20 +81,17 @@ print_r(mysqli_fetch_row($result));
 					<td><?php echo $mostrar[7] ?></td>
 					<td><?php echo $mostrar[8] ?></td>
 					<td><?php echo $mostrar[9] ?></td>
-					
-					
+								
 					<td style="text-align: center;">
 						<span class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modalEditar" onclick="agregaFrmActualizar('<?php echo $mostrar[0] ?>')">
 							<span class="fa fa-pencil-square-o"></span>
 						</span>
 					</td>
 					<td style="text-align: center;">
-					<a href='http://localhost/blancosoft/procesos/tratamientos/tratamientos.php?id=<?php echo($mostrar[0]);?>' >
-						Tratamientos 
-					</a>
-						<span class="btn btn-danger btn-sm"   onclick="myfunction(<?php echo $mostrar[0] ?>)">
-							<span class="fa fa-laptop"></span>
-						</span>
+					<a class="btn btn-danger btn-sm"  href='http://localhost/blancosoft/procesos/tratamientos/tratamientos.php?id=<?php echo($mostrar[0]);?>' onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=800,height=800,toolbar=1,resizable=0'); return false;"  >
+					<span class="fa fa-laptop"></span>
+					</a>						
 					</td>
 					<td style="text-align: center;">
 						<span class="btn btn-danger btn-sm" onclick="eliminarDatos('<?php echo $mostrar[0] ?>')">
@@ -108,6 +105,8 @@ print_r(mysqli_fetch_row($result));
 			?>
 		</tbody>
 	</table>
+	
+
 </div>
 
 <script type="text/javascript">

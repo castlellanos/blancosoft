@@ -43,12 +43,13 @@
 				<div class="modal-body">
 					<form id="frmnuevo">
 						
+						<input type="hidden" class="form-control input-sm" id="animal" name="animal" value="<?php echo($_GET['id']); ?>">
 						<label>Fecha</label>
-						<input type="date" class="form-control input-sm" id="f_nac" name="f_nac">
+						<input type="date" class="form-control input-sm" id="fecha" name="fecha">
 						<label>Tipo</label>
-						<input type="" class="form-control input-sm" id="tipo" name="tipo">
+						<input type="input" class="form-control input-sm" id="tipo" name="tipo">
 						<label>Observación</label>
-						<input type="" class="form-control input-sm" id="observacion" name="observacion">
+						<input type="input" class="form-control input-sm" id="descripcion" name="descripcion">
 						
 						
 					</form>
@@ -197,8 +198,12 @@
 				url:"operaciones/agregar.php",
 				success:function(r){
 					if(r==1){
+		
+						let searchParams = new URLSearchParams(datos);			
+						let animal_id=searchParams.get("animal") ;
+						let paramsString='tabla.php?id=' +animal_id;
 						$('#frmnuevo')[0].reset();
-						$('#tablaDatatable').load('tabla.php');
+						$('#tablaDatatable').load(paramsString);
 						alertify.success("agregado con exito :D");
 					}else{
 						alertify.error("Fallo al agregar :(");
