@@ -19,6 +19,7 @@ observacion
 FROM
 animales where estado='1'";
 $result=mysqli_query($conexion,$sql);
+print_r(mysqli_fetch_row($result));
 ?>
 
 
@@ -88,6 +89,9 @@ $result=mysqli_query($conexion,$sql);
 						</span>
 					</td>
 					<td style="text-align: center;">
+					<a href='http://localhost/blancosoft/procesos/tratamientos/tratamientos.php?id=<?php echo($mostrar[0]);?>' >
+						Tratamientos 
+					</a>
 						<span class="btn btn-danger btn-sm"   onclick="myfunction(<?php echo $mostrar[0] ?>)">
 							<span class="fa fa-laptop"></span>
 						</span>

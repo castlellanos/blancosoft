@@ -3,13 +3,11 @@
 
 require_once "../../clases/conexion.php";
 
-var_dump($_REQUEST);
-
 
 $obj= new conectar();
 $conexion=$obj->conexion();
 
-$sql="SELECT id,animal,fecha,tipo, descripcion FROM `tratamientos` where estado='1'";
+$sql="SELECT id,animal,fecha,tipo, descripcion FROM `tratamientos` WHERE estado='1' AND id = ".$_GET['id']."";
 $result=mysqli_query($conexion,$sql);
 ?>
 

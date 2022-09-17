@@ -18,7 +18,9 @@
 							Agregar nuevo <span class="fa fa-plus-circle"></span>
 						</span>
 						<hr>
-						<div id="tablaDatatable"></div>
+						<div id="tablaDatatable">
+							<?php include_once './tabla.php'; ?>
+						</div>
 					</div>
 					<div class="card-footer text-muted">
 						ADSI
@@ -164,6 +166,7 @@
 
 
 
+	
 
 
 
@@ -224,11 +227,11 @@
 		});
 	});
 </script>
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 	$(document).ready(function(){
 		$('#tablaDatatable').load('tabla.php');
 	});
-</script>
+</script> -->
 
 <script type="text/javascript">
 	function agregaFrmActualizar(idanimal){
