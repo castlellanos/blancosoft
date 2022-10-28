@@ -6,7 +6,7 @@
 	
 </head>
 <body>
-	<div class="container">
+	<div class="container" style="margin-left: 0px;margin-right: 0px;max-width:100%">
 		<div class="row">
 			<div class="col-sm-12">
 				<div class="card text-left">
@@ -23,7 +23,7 @@
 						</div>
 					</div>
 					<div class="card-footer text-muted">
-						ADSI
+						
 					</div>
 				</div>
 			</div>

@@ -24,7 +24,7 @@ $result=mysqli_query($conexion,$sql);
 
 
 <div style="overflow-x:auto;">
-	<table class="table table-hover table-condensed table-bordered" id="iddatatable" >
+	<table class="table table-hover table-condensed table-bordered w-100" id="iddatatable" >
 		<thead style="background-color: #dc3545;color: white; font-weight: bold;">
 			<tr>
 				<td>Id</td>
