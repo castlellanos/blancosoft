@@ -1,35 +1,42 @@
 <?php
-# Las claves de acceso, ahorita las ponemos aquí
-# y en otro ejercicio las ponemos en una base de datos
-$usuario_correcto = "dantr@gmail.com";
-$palabra_secreta_correcta = "password";
 /*
 Para leer los datos que fueron enviados al formulario,
 accedemos al arreglo superglobal llamado $_POST en PHP, y
 para obtener un valor accedemos a $_POST["clave"] en donde
 clave es el "name" que le dimos al input
  */
-# Nota: no estamos haciendo validaciones
+$animalesLocation = "Location: animales/animales.php";
+$seguimientosLocation = "Location: seguimientos/seguimientos.php";
+$page = $_SERVER["page"];
+
 $usuario = $_POST["usuario"];
 $password = $_POST["palabra_secreta"];
 
-# Luego de haber obtenido los valores, ya podemos comprobar:
-if ($usuario === $usuario_correcto && $password === $palabra_secreta_correcta) {
-    # Significa que coinciden, así que vamos a guardar algo
-    # en el arreglo superglobal $_SESSION, ya que ese arreglo
-    # "persiste" a través de todas las páginas
+$conexion = mysqli_connect('localhost', 'root', '', 'blanco');
 
-    # Iniciar sesión para poder usar el arreglo
-    session_start();
-    # Y guardar un valor que nos pueda decir si el usuario
-    # ya ha iniciado sesión o no. En este caso es el nombre
-    # de usuario
-    $_SESSION["usuario"] = $usuario;
+$sql = "SELECT usuario, password
+       FROM usuarios 
+       WHERE usuario='$usuario' and password='$password'";
 
-    # Luego redireccionamos a la página "Secreta"
-    header("Location: animales/animales.php");
+$result = mysqli_query($conexion,$sql);
+
+$posibleUsuarioRegistrado = mysqli_fetch_row($result);
+
+if ($usuario === $posibleUsuarioRegistrado[0] && $password === $posibleUsuarioRegistrado[1]) {
+  session_start();
+  $_SESSION["correo"] = $usuario;
+  # Redirigir a secreta
+  $url = $_SERVER['HTTP_REFERER'];
+  $parts = parse_url($url);
+  parse_str($parts['query'], $query);
+  if ($query['page'] === 'animales') {
+    header($animalesLocation);
+  } else {
+    header($seguimientosLocation);
+  }
+  # Y salir
+  exit;
 } else {
-    # No coinciden, así que simplemente imprimimos un
-    # mensaje diciendo que es incorrecto
-    header("Location: invalid-user.html");
+  # Si no, entonces indicarlo
+  header("Location: invalid-user.html");
 }

@@ -10,10 +10,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>GINTAC</title>
     <?php 
-	
+	session_start();
 	
 	require_once "../../librerias/scripts.php";
-	
 	
 	?>
 
@@ -38,7 +37,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a href="../login.html" class="nav-link">Login</a>
+                    <a href="../login.html?page=seguimientos" class="nav-link">Login</a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
                     <a href="#" class="nav-link active" >Gestion Seguimientos</a>
@@ -109,7 +108,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             alt="User Image">
                     </div>
                     <div class="info">
-                        <a href="#" class="d-block">usuario</a>
+                        <?php
+                            if(isset($_SESSION["correo"])) {
+                                $_SESSION["usuario"] = $_SESSION["correo"];
+                            } else {
+                                $_SESSION["usuario"] = "no_identificado";
+                            }
+                        ?>
+                        <a href="#" class="d-block" style="color: <?php echo ("no_identificado" === ($_SESSION["usuario"])) ? "#F7765A" : "#c2c7d0"; ?>">
+                            <?php echo $_SESSION["usuario"]?>
+                        </a>
                     </div>
                 </div>
 
