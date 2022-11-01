@@ -11,6 +11,9 @@
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
+  <!-- Select2 -->
+  <link rel="stylesheet" href="../vistas/assets/plugins/select2/css/select2.min.css">
+  <link rel="stylesheet" href="../vistas/assets/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="../vistas/assets/plugins/fontawesome-free/css/all.min.css">
   <!-- Ionicons -->
@@ -35,7 +38,7 @@
       <!-- Se va a procesar en login.php y se enviará por POST, no por GET-->
       <form action="login.php" method="post">
         <div class="input-group mb-3">
-          <input name="usuario" type="email" class="form-control" placeholder="Email">
+          <input id="usuario" name="usuario" type="email" class="form-control" placeholder="Email">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-envelope"></span>
@@ -43,14 +46,15 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <input name="palabra_secreta" type="password" class="form-control" placeholder="Password">
+          <input id="palabra_secreta" name="palabra_secreta" type="password" class="form-control" placeholder="Password">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
             </div>
           </div>
         </div>
-        <div class="row">
+        <select id="roles" name="roles" class="form-control select2" style="width: 100%;"></select>
+        <div class="row"  style="padding-top: 16px;">
           <div class="col-8">
             <div class="icheck-primary">
               <input type="checkbox" id="remember">
@@ -78,15 +82,37 @@
     <!-- /.login-card-body -->
   </div>
 </div>
-<!-- /.login-box -->
 
-<!-- jQuery -->
-<script src="../vistas/assets/plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
-<script src="../vistas/assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- AdminLTE App -->
-<script src="../vistas/assets/dist/js/adminlte.min.js"></script>
-
+  <!-- Select2 -->
+  <script src="../../plugins/select2/js/select2.full.min.js"></script>
+  <!-- jQuery -->
+  <script src="../vistas/assets/plugins/jquery/jquery.min.js"></script>
+  <!-- Bootstrap 4 -->
+  <script src="../vistas/assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- AdminLTE App -->
+  <script src="../vistas/assets/dist/js/adminlte.min.js"></script>
 </body>
+
+<script type="text/javascript">
+  function obtenDatos(idanimal) {
+
+      // Create the DOM option that is pre-selected by default
+      const default1 = new Option("Seleccione un Rol", 0, true, true);
+      // Append it to the select
+      $("#roles").append(default1).trigger('change');
+      $.ajax({
+          type: "POST",
+          url: "login/completarRoles.php",
+          success: function(r) {
+              const datos = jQuery.parseJSON(r);
+              datos.forEach(element => {
+                const newState = new Option(element.nombre, element.id);
+                $("#roles").append(newState).trigger('change');
+              });
+          }
+      });
+  }
+  obtenDatos();
+</script>
 
 </html>
